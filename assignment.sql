@@ -65,3 +65,6 @@ insert into sightings (sighting_id, species_id, ranger_id, locations,sighting_ti
 
 
 SELECT * from sightings
+
+--Q1: register a new ranger
+insert into ranger (name, region) VALUES('Derek Fox', 'Costal Plains');
