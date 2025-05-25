@@ -68,3 +68,7 @@ SELECT * from sightings
 
 --Q1: register a new ranger
 insert into ranger (name, region) VALUES('Derek Fox', 'Costal Plains');
+
+--Q2: Count unique species ever sighted
+SELECT count(DISTINCT species_id) as unique_species_counts
+from sightings
