@@ -77,3 +77,10 @@ from sightings
 
 select * from sightings
 where locations ILIKE '%pass%';
+
+--list each anger names and their total number of sighting
+
+select ranger.name, count(sightings.sighting_id) from ranger
+left join sightings on ranger.ranger_id = sightings.ranger_id
+group by ranger.name  
+order by ranger.name;
