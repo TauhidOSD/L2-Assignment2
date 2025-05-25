@@ -73,14 +73,21 @@ insert into ranger (name, region) VALUES('Derek Fox', 'Costal Plains');
 SELECT count(DISTINCT species_id) as unique_species_counts
 from sightings
 
---find sighting where location includes "pass"
+--Q3: find sighting where location includes "pass"
 
 select * from sightings
 where locations ILIKE '%pass%';
 
---list each anger names and their total number of sighting
+--Q4: list each anger names and their total number of sighting
 
 select ranger.name, count(sightings.sighting_id) from ranger
-left join sightings on ranger.ranger_id = sightings.ranger_id
+inner join sightings on ranger.ranger_id = sightings.ranger_id
 group by ranger.name  
 order by ranger.name;
+
+
+--Q5:list species that have never been sighted
+
+select common_name from species
+where species_id not in 
+(select DISTINCT species_id from sightings);
