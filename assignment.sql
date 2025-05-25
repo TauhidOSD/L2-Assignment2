@@ -63,7 +63,6 @@ insert into sightings (sighting_id, species_id, ranger_id, locations,sighting_ti
 (3,3,3, 'Bamboo grove East', '2024-05-15 09:10:00', 'Feeding observed'),
 (4,1,2, 'Snowfall pass', '2024-05-18 18:30:00', null);
 
-
 SELECT * from sightings
 
 --Q1: register a new ranger
