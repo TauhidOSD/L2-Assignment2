@@ -9,16 +9,18 @@ create table ranger (
 
 --create species table
 
-CREATE table species (
+CREATE table  species (
     species_id serial PRIMARY key,
     common_name VARCHAR(50) not null,
     scientific_name varchar(50) not null,
     discovery_date DATE not NULL,
     conservation_status VARCHAR(50) CHECK (
-        conservation_status IN ('Endanger','Vulnerable', 'Historic')
+        conservation_status IN ('Endangered','Vulnerable', 'Historic')
     )
 
 )
+
+
 
 -- crate sightings table
 CREATE table sightings (
@@ -43,5 +45,23 @@ select * from ranger
 
 --insert data into species table
 
+insert into species (common_name, scientific_name, discovery_date,conservation_status) VALUES 
+('snow leopard','Panther uncia','1775-01-01','Endangered' ),
+('Bengal Tiger','Panther tigris tigris','1758-01-01','Endangered' ),
+('Red Panda','Ailurus fulgens','1825-01-01','Vulnerable' ),
+('Asiatic Elephant','Elephas maximus indicus','1758-01-01','Endangered' );
+
+--check species table
+select * from species
 
 
+-- insert data into sightings table
+
+insert into sightings (sighting_id, species_id, ranger_id, locations,sighting_time,note) VALUES
+(1,1,1, 'peak ridge', '2024-05-10 07:45:00', 'camera trap image captured'),
+(2,2,2, 'Backwood area', '2024-05-12 16:20:00', 'juvenile seen'),
+(3,3,3, 'Bamboo grove East', '2024-05-15 09:10:00', 'Feeding observed'),
+(4,1,2, 'Snowfall pass', '2024-05-18 18:30:00', null);
+
+
+SELECT * from sightings
