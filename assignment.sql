@@ -72,3 +72,8 @@ insert into ranger (name, region) VALUES('Derek Fox', 'Costal Plains');
 --Q2: Count unique species ever sighted
 SELECT count(DISTINCT species_id) as unique_species_counts
 from sightings
+
+--find sighting where location includes "pass"
+
+select * from sightings
+where locations ILIKE '%pass%';
