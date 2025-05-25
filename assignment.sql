@@ -118,3 +118,10 @@ END as time_of_day
 
 from sightings
 order by sighting_id;
+
+--Q9:delete rangers who have never sighted any species
+
+delete from ranger
+where ranger_id not in (select DISTINCT ranger_id from sightings);
+
+
