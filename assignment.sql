@@ -91,3 +91,30 @@ order by ranger.name;
 select common_name from species
 where species_id not in 
 (select DISTINCT species_id from sightings);
+
+
+--Q6: show the most recent 2 sightings
+
+select sp.common_name, s.sighting_time, r.name from sightings as s
+join species as sp on s.species_id = sp.species_id
+join ranger as r on s.ranger_id = r.ranger_id
+order by s.sighting_time  DESC
+LIMIT 2;
+
+
+--Q7: update all species discovered before 1800 status 'Historic'
+
+update species
+ set conservation_status = 'Historic'
+ where discovery_date < '1800-01-01';
+
+--Q8: label each sightings time of day as 'Morning','Afternoon',or 'Evening'
+select sighting_id,
+CASE 
+    WHEN extract(hour from sighting_time) <12  THEN 'Morning'
+    WHEN extract(hour from sighting_time) <17  THEN 'Afternoon'
+ ELSE  'Evening'
+END as time_of_day
+
+from sightings
+order by sighting_id;
